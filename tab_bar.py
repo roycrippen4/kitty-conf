@@ -14,30 +14,30 @@ from kitty.tab_bar import (
 )
 
 opts = get_options()
-icon_fg = as_rgb(color_as_int(opts.background))
+# icon_fg = as_rgb(color_as_int(opts.color1))
 icon_bg = as_rgb(color_as_int(opts.color6))
 
-date_fgcolor = as_rgb(color_as_int(opts.tab_bar_background))
+date_fgcolor = as_rgb(color_as_int(opts.color6))
 # date_bgcolor = as_rgb(color_as_int(opts.color9))
-date_bgcolor = as_rgb(color_as_int(Color(251, 74, 52)))
+date_bgcolor = as_rgb(color_as_int(opts.active_tab_background))
 
 separator_fg = as_rgb(color_as_int(opts.color9))
 
 bat_text_color = as_rgb(color_as_int(opts.color15))
 SEPARATOR_SYMBOL, SOFT_SEPARATOR_SYMBOL = ("", "")
 RIGHT_MARGIN = 0
-ICON = "  "
+# ICON = "  "
 
-def _draw_icon(screen: Screen, index: int) -> int:
-    if index != 1:
-        return 0
-    fg, bg = screen.cursor.fg, screen.cursor.bg
-    screen.cursor.fg = icon_fg
-    screen.cursor.bg = icon_bg
-    screen.draw(ICON)
-    screen.cursor.fg, screen.cursor.bg = fg, bg
-    screen.cursor.x = len(ICON)
-    return screen.cursor.x
+# def _draw_icon(screen: Screen, index: int) -> int:
+#     if index != 1:
+#         return 0
+#     fg, bg = screen.cursor.fg, screen.cursor.bg
+#     screen.cursor.fg = icon_fg
+#     screen.cursor.bg = icon_bg
+#     screen.draw(ICON)
+#     screen.cursor.fg, screen.cursor.bg = fg, bg
+#     screen.cursor.x = len(ICON)
+#     return screen.cursor.x
 
 
 def _draw_left_status(
@@ -61,8 +61,8 @@ def _draw_left_status(
     else:
         next_tab_bg = default_bg
         needs_soft_separator = False
-    if screen.cursor.x <= len(ICON):
-        screen.cursor.x = len(ICON)
+    # if screen.cursor.x <= len(ICON):
+    #     screen.cursor.x = len(ICON)
     screen.draw(" ")
     screen.cursor.bg = tab_bg
     draw_title(draw_data, screen, tab, index)
@@ -125,7 +125,7 @@ def draw_tab(
     for cell in cells:
         right_status_length += len(str(cell[2]))
 
-    _draw_icon(screen, index)
+    # _draw_icon(screen, index)
     _draw_left_status(
         draw_data,
         screen,
