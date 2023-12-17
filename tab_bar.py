@@ -1,7 +1,6 @@
 from datetime import datetime
 from kitty.boss import get_boss
 from kitty.fast_data_types import Screen, add_timer, get_options
-from kitty.rgb import Color
 from kitty.utils import color_as_int
 from kitty.tab_bar import (
     DrawData,
@@ -27,12 +26,11 @@ CLOCK_FG = as_rgb(color_as_int(opts.active_tab_background))
 DATE_BG = as_rgb(color_as_int(opts.color8))
 DATE_FG = as_rgb(color_as_int(opts.active_tab_background))
 
-# separator_fg = as_rgb(color_as_int(opts.color9))
-
 bat_text_color = as_rgb(color_as_int(opts.color15))
 SEPARATOR_SYMBOL, SOFT_SEPARATOR_SYMBOL = ("", "")
 RIGHT_MARGIN = 0
 REFRESH_TIME = 1
+
 
 def _draw_left_status(
     draw_data: DrawData,
@@ -74,7 +72,7 @@ def _draw_left_status(
             c2 = draw_data.inactive_bg.contrast(draw_data.inactive_fg)
             if c1 < c2:
                 screen.cursor.fg = default_bg
-        screen.cursor.fg = prev_fg # separator_fg
+        screen.cursor.fg = prev_fg  # separator_fg
         screen.draw(" " + SOFT_SEPARATOR_SYMBOL)
     end = screen.cursor.x
     return end
@@ -102,6 +100,7 @@ def _redraw_tab_bar(_):
 
 timer_id = None
 right_status_length = -1
+
 
 def draw_tab(
     draw_data: DrawData,
