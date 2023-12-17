@@ -24,21 +24,8 @@ date_bgcolor = as_rgb(color_as_int(opts.active_tab_background))
 separator_fg = as_rgb(color_as_int(opts.color9))
 
 bat_text_color = as_rgb(color_as_int(opts.color15))
-SEPARATOR_SYMBOL, SOFT_SEPARATOR_SYMBOL = ("", "")
+SEPARATOR_SYMBOL, SOFT_SEPARATOR_SYMBOL = ("", "")
 RIGHT_MARGIN = 0
-# ICON = "  "
-
-# def _draw_icon(screen: Screen, index: int) -> int:
-#     if index != 1:
-#         return 0
-#     fg, bg = screen.cursor.fg, screen.cursor.bg
-#     screen.cursor.fg = icon_fg
-#     screen.cursor.bg = icon_bg
-#     screen.draw(ICON)
-#     screen.cursor.fg, screen.cursor.bg = fg, bg
-#     screen.cursor.x = len(ICON)
-#     return screen.cursor.x
-
 
 def _draw_left_status(
     draw_data: DrawData,
